@@ -1,51 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const currentTheme = localStorage.getItem("site-theme") || "dark";
-  if (currentTheme === "light") {
-    document.body.classList.add("light-theme");
-  }
-
-  const logoEl = document.querySelector(".logo");
-  if (logoEl && !document.querySelector(".net-status-dot")) {
-    const logoWrap = document.createElement("div");
-    logoWrap.className = "logo-container";
-    logoEl.parentNode.insertBefore(logoWrap, logoEl);
-    logoWrap.appendChild(logoEl);
-
-    const dot = document.createElement("span");
-    dot.className = "net-status-dot";
-    dot.title = navigator.onLine ? "Canal retea: Activ (Online)" : "Canal retea: Inactiv (Offline)";
-    if (!navigator.onLine) dot.classList.add("offline");
-    logoWrap.appendChild(dot);
-
-    window.addEventListener("online", () => {
-      dot.classList.remove("offline");
-      dot.title = "Canal retea: Activ (Online)";
-    });
-    window.addEventListener("offline", () => {
-      dot.classList.add("offline");
-      dot.title = "Canal retea: Inactiv (Offline)";
-    });
-  }
-
-  const navUl = document.querySelector("nav ul");
-  if (navUl && !document.querySelector(".theme-toggle-btn")) {
-    const themeLi = document.createElement("li");
-    themeLi.innerHTML = `
-      <button class="theme-toggle-btn" title="Comuta modul Dark/Light">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
-        </svg>
-      </button>
-    `;
-    navUl.appendChild(themeLi);
-
-    const themeBtn = themeLi.querySelector(".theme-toggle-btn");
-    themeBtn.addEventListener("click", () => {
-      document.body.classList.toggle("light-theme");
-      const isLight = document.body.classList.contains("light-theme");
-      localStorage.setItem("site-theme", isLight ? "light" : "dark");
-    });
-  }
+  localStorage.removeItem("site-theme");
 
   const style = document.createElement("style");
   style.textContent = `
@@ -434,7 +388,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="ai-chip" data-cmd="proiecte">Proiecte</button>
         <button class="ai-chip" data-cmd="contact">Contact</button>
         <button class="ai-chip" data-cmd="cv">Descarcă CV</button>
-        <button class="ai-chip" data-cmd="diag">Diagnostic Retea</button>
       </div>
     </div>
   `;
@@ -481,34 +434,14 @@ document.addEventListener("DOMContentLoaded", () => {
       userMsg.textContent = chip.textContent;
       chatBody.appendChild(userMsg);
 
-      if (cmd === "diag") {
-        const start = performance.now();
-        fetch(window.location.href, { method: "HEAD", cache: "no-store" })
-          .then(() => {
-            const latency = Math.round(performance.now() - start);
-            const botMsg = document.createElement("div");
-            botMsg.className = "ai-msg bot";
-            botMsg.innerHTML = `Stare canal: <strong>Activ</strong><br>Latență RTT: <strong>${latency} ms</strong><br>Protocol: <strong>${window.location.protocol.replace(':', '').toUpperCase()}</strong><br>Host: <strong>${window.location.hostname || 'Localhost'}</strong>`;
-            chatBody.appendChild(botMsg);
-            chatBody.scrollTop = chatBody.scrollHeight;
-          })
-          .catch(() => {
-            const botMsg = document.createElement("div");
-            botMsg.className = "ai-msg bot";
-            botMsg.textContent = "Nu am putut măsura conexiunea. Verifică rețeaua.";
-            chatBody.appendChild(botMsg);
-            chatBody.scrollTop = chatBody.scrollHeight;
-          });
-      } else {
-        setTimeout(() => {
-          const botMsg = document.createElement("div");
-          botMsg.className = "ai-msg bot";
-          const res = responses[cmd];
-          botMsg.innerHTML = `${res.text}<br><br>${res.action}`;
-          chatBody.appendChild(botMsg);
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }, 350);
-      }
+      setTimeout(() => {
+        const botMsg = document.createElement("div");
+        botMsg.className = "ai-msg bot";
+        const res = responses[cmd];
+        botMsg.innerHTML = `${res.text}<br><br>${res.action}`;
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 350);
 
       chatBody.scrollTop = chatBody.scrollHeight;
     });
