@@ -21,7 +21,7 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   color: var(--text-white);
-  background-color: var(--bg-dark);
+  background: var(--bg-dark);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,9 +31,8 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  justify-content: center;
 }
 
 header {
@@ -47,12 +46,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  width: 100%;
 }
 
-.logo, 
-.gallery-title, 
-.btn-artistic {
+.logo, .gallery-title, .btn-artistic {
   font-family: 'Cinzel', serif;
 }
 
@@ -110,7 +106,6 @@ nav ul li a:hover {
   text-decoration: none;
   font-size: 0.7rem;
   text-align: center;
-  width: 100%;
 }
 
 .dropdown-content a:hover {
@@ -137,7 +132,7 @@ nav ul li a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 20px;
   padding: 3px;
 }
 
@@ -163,9 +158,6 @@ nav ul li a:hover {
   font-size: 0.9rem;
   color: var(--text-dim);
   margin-top: 20px;
-}
-
-.insta-stats div {
   text-align: center;
 }
 
@@ -194,11 +186,10 @@ nav ul li a:hover {
   height: 80px;
   border-radius: 50%;
   background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  margin: 0 auto 10px auto;
+  margin: 0 auto 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   transition: transform 0.3s ease;
 }
 
@@ -225,8 +216,7 @@ nav ul li a:hover {
   transform: scale(1.08);
 }
 
-.highlight-label, 
-.project-meta {
+.highlight-label, .project-meta {
   font-size: 0.7rem;
   color: var(--text-dim);
   font-weight: 600;
@@ -257,8 +247,7 @@ nav ul li a:hover {
   color: var(--text-white);
 }
 
-.description, 
-.gallery-description {
+.description, .gallery-description {
   max-width: 800px;
   line-height: 1.7;
   color: var(--text-dim);
@@ -293,8 +282,7 @@ nav ul li a:hover {
   color: var(--btn-hover-text);
 }
 
-.hotel-grid, 
-.foto-grid {
+.hotel-grid, .foto-grid {
   display: grid;
   gap: 20px;
 }
@@ -309,8 +297,7 @@ nav ul li a:hover {
   margin-top: 40px;
 }
 
-.hotel-item, 
-.foto-item {
+.hotel-item, .foto-item {
   overflow: hidden;
   border: 1px solid var(--card-border);
 }
@@ -324,16 +311,14 @@ nav ul li a:hover {
   border-radius: 2px;
 }
 
-.hotel-item img, 
-.foto-item img {
+.hotel-item img, .foto-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: 0.5s ease;
 }
 
-.hotel-item:hover img, 
-.foto-item:hover img {
+.hotel-item:hover img, .foto-item:hover img {
   transform: scale(1.05);
 }
 
@@ -351,7 +336,6 @@ nav ul li a:hover {
 }
 
 .focus-section {
-  width: 100%;
   margin-top: 30px;
 }
 
@@ -415,7 +399,6 @@ nav ul li a:hover {
 }
 
 .skill-bar {
-  width: 100%;
   height: 2px;
   background: var(--card-border);
   position: relative;
@@ -447,7 +430,7 @@ nav ul li a:hover {
 .gallery-description {
   text-align: center;
   opacity: 0.8;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 30px;
 }
 
 .action-container {
@@ -510,7 +493,6 @@ footer {
 
   .btn-artistic {
     display: block;
-    width: 100%;
     margin: 10px 0;
     padding: 12px 15px;
   }
@@ -543,8 +525,7 @@ footer {
     height: 30px;
   }
 
-  .hotel-grid,
-  .foto-grid {
+  .hotel-grid, .foto-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
@@ -556,8 +537,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hotel-grid,
-  .foto-grid {
+  .hotel-grid, .foto-grid {
     grid-template-columns: 1fr;
   }
 
