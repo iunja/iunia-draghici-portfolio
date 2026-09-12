@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       border-radius: 4px;
       transform: scale(0.9);
       transition: transform 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .img-lightbox.active .lightbox-img-wrapper img {
       transform: scale(1);
@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     .lightbox-btn:hover {
       background: rgba(255, 255, 255, 0.25);
-      color: #fff;
     }
     .lightbox-prev {
       left: 20px;
@@ -116,137 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .foto-item img, .hotel-item img {
       cursor: zoom-in;
     }
-
-    .ai-bubble-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9990;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-    }
-    .ai-bubble-btn:hover {
-      transform: scale(1.08);
-    }
-    .ai-bubble-btn svg {
-      width: 24px;
-      height: 24px;
-      fill: #fff;
-    }
-    .ai-chat-window {
-      position: fixed;
-      bottom: 90px;
-      right: 25px;
-      width: 320px;
-      max-height: 460px;
-      background: rgba(15, 15, 15, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 9990;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(15px);
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-    .ai-chat-window.active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .ai-header {
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      color: #fff;
-    }
-    .ai-close-btn {
-      background: transparent;
-      border: none;
-      color: #a0a0a0;
-      font-size: 1.2rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .ai-close-btn:hover {
-      color: #fff;
-    }
-    .ai-body {
-      padding: 15px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-height: 260px;
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-    .ai-msg {
-      padding: 10px 14px;
-      border-radius: 8px;
-      max-width: 90%;
-      word-wrap: break-word;
-    }
-    .ai-msg.bot {
-      background: rgba(255, 255, 255, 0.05);
-      color: #e0e0e0;
-      align-self: flex-start;
-      border-left: 2px solid #e6683c;
-    }
-    .ai-msg.bot a {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .ai-msg.user {
-      background: #fff;
-      color: #000;
-      align-self: flex-end;
-      font-weight: 500;
-    }
-    .ai-actions {
-      padding: 12px 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      background: rgba(0, 0, 0, 0.3);
-    }
-    .ai-chip {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-    .ai-chip:hover {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-    }
-
     @media (max-width: 768px) {
       .lightbox-btn {
         width: 40px;
@@ -258,18 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       .lightbox-next {
         right: 10px;
-      }
-      .ai-chat-window {
-        right: 15px;
-        bottom: 80px;
-        width: calc(100% - 30px);
-        max-width: 320px;
-      }
-      .ai-bubble-btn {
-        bottom: 15px;
-        right: 15px;
-        width: 46px;
-        height: 46px;
       }
     }
   `;
@@ -283,20 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const targets = document.querySelectorAll(
-    ".foto-item, .hotel-item, .project-section, .timeline-item, .skill-item"
-  );
-  if (targets.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  const targets = document.querySelectorAll(".foto-item, .hotel-item, .project-section, .timeline-item, .skill-item");
+  if (targets.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+
     targets.forEach((el) => {
       el.classList.add("fade-item");
       observer.observe(el);
@@ -304,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const galleryImgs = Array.from(document.querySelectorAll(".foto-item img, .hotel-item img"));
-  if (galleryImgs.length > 0) {
+  if (galleryImgs.length) {
     let currentIndex = 0;
 
     const lightbox = document.createElement("div");
@@ -312,22 +162,14 @@ document.addEventListener("DOMContentLoaded", () => {
     lightbox.innerHTML = `
       <button class="lightbox-close" title="Inchide">&times;</button>
       <button class="lightbox-btn lightbox-prev" title="Inapoi">&#10094;</button>
-      <div class="lightbox-img-wrapper">
-        <img src="" alt="Vizualizare">
-      </div>
+      <div class="lightbox-img-wrapper"><img src="" alt="Vizualizare"></div>
       <button class="lightbox-btn lightbox-next" title="Inainte">&#10095;</button>
     `;
     document.body.appendChild(lightbox);
 
     const lightboxImg = lightbox.querySelector("img");
-    const prevBtn = lightbox.querySelector(".lightbox-prev");
-    const nextBtn = lightbox.querySelector(".lightbox-next");
-    const closeBtn = lightbox.querySelector(".lightbox-close");
-
     const updateImage = (index) => {
-      currentIndex = index;
-      if (currentIndex < 0) currentIndex = galleryImgs.length - 1;
-      if (currentIndex >= galleryImgs.length) currentIndex = 0;
+      currentIndex = (index + galleryImgs.length) % galleryImgs.length;
       lightboxImg.src = galleryImgs[currentIndex].src;
     };
 
@@ -336,25 +178,21 @@ document.addEventListener("DOMContentLoaded", () => {
       lightbox.classList.add("active");
     };
 
-    const closeLightbox = () => {
-      lightbox.classList.remove("active");
-    };
+    const closeLightbox = () => lightbox.classList.remove("active");
 
-    galleryImgs.forEach((img, idx) => {
-      img.addEventListener("click", () => openLightbox(idx));
-    });
+    galleryImgs.forEach((img, idx) => img.addEventListener("click", () => openLightbox(idx)));
 
-    prevBtn.addEventListener("click", (e) => {
+    lightbox.querySelector(".lightbox-prev").addEventListener("click", (e) => {
       e.stopPropagation();
       updateImage(currentIndex - 1);
     });
 
-    nextBtn.addEventListener("click", (e) => {
+    lightbox.querySelector(".lightbox-next").addEventListener("click", (e) => {
       e.stopPropagation();
       updateImage(currentIndex + 1);
     });
 
-    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
 
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
@@ -367,83 +205,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Escape") closeLightbox();
     });
   }
-
-  const chatContainer = document.createElement("div");
-  chatContainer.innerHTML = `
-    <button class="ai-bubble-btn" title="Asistent Portofoliu">
-      <svg viewBox="0 0 24 24">
-        <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
-      </svg>
-    </button>
-    <div class="ai-chat-window">
-      <div class="ai-header">
-        <span>Asistent Virtual</span>
-        <button class="ai-close-btn">&times;</button>
-      </div>
-      <div class="ai-body" id="aiChatBody">
-        <div class="ai-msg bot">Bună! Sunt asistentul virtual al Iuniei. Alege o comandă rapidă:</div>
-      </div>
-      <div class="ai-actions">
-        <button class="ai-chip" data-cmd="despre">Despre Iunia</button>
-        <button class="ai-chip" data-cmd="proiecte">Proiecte</button>
-        <button class="ai-chip" data-cmd="contact">Contact</button>
-        <button class="ai-chip" data-cmd="cv">Descarcă CV</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(chatContainer);
-
-  const bubbleBtn = chatContainer.querySelector(".ai-bubble-btn");
-  const chatWindow = chatContainer.querySelector(".ai-chat-window");
-  const closeChatBtn = chatContainer.querySelector(".ai-close-btn");
-  const chatBody = chatContainer.querySelector("#aiChatBody");
-  const chips = chatContainer.querySelectorAll(".ai-chip");
-
-  bubbleBtn.addEventListener("click", () => {
-    chatWindow.classList.toggle("active");
-  });
-
-  closeChatBtn.addEventListener("click", () => {
-    chatWindow.classList.remove("active");
-  });
-
-  const responses = {
-    despre: {
-      text: "Iunia este studentă la Media Digitală în Brașov, pasionată de Web Design, UI/UX și Fotografie.",
-      action: '<a href="about.html">Vezi pagina Despre &rarr;</a>'
-    },
-    proiecte: {
-      text: "Portofoliul include design web, UI/UX, fotografie digitală și activitate practică de marketing.",
-      action: '<a href="projects.html">Explorează Portofoliul &rarr;</a>'
-    },
-    contact: {
-      text: "O poți contacta pe WhatsApp la 0755 082 858 sau pe email.",
-      action: '<a href="https://wa.me/40755082858" target="_blank">Deschide WhatsApp &rarr;</a>'
-    },
-    cv: {
-      text: "Poți consulta CV-ul complet salvat în format PDF.",
-      action: '<a href="CV_Iunia.pdf" target="_blank">Deschide PDF CV &rarr;</a>'
-    }
-  };
-
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      const cmd = chip.getAttribute("data-cmd");
-      const userMsg = document.createElement("div");
-      userMsg.className = "ai-msg user";
-      userMsg.textContent = chip.textContent;
-      chatBody.appendChild(userMsg);
-
-      setTimeout(() => {
-        const botMsg = document.createElement("div");
-        botMsg.className = "ai-msg bot";
-        const res = responses[cmd];
-        botMsg.innerHTML = `${res.text}<br><br>${res.action}`;
-        chatBody.appendChild(botMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 350);
-
-      chatBody.scrollTop = chatBody.scrollHeight;
-    });
-  });
 });
